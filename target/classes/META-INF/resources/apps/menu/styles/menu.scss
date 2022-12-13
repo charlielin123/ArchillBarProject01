@@ -1,0 +1,460 @@
+$themeColor: #d68910;
+$colorHover: #ffd89a;
+$themeColor2: rgba(0, 0, 0, 0.7);
+$colorHover2: rgb(140, 140, 140, 0.8);
+$pageColor: rgba(101, 102, 104, 0.3);
+@import "_loading";
+
+@font-face {
+    font-family: tttt;
+    src: url(../css/tw.ttf);
+}
+
+@font-face {
+    font-family: naikaifont;
+    src: url(https://cdn.jsdelivr.net/gh/max32002/naikaifont@1.0/webfont/NaikaiFont-Regular-Lite.woff2) format("woff2"), url(https://cdn.jsdelivr.net/gh/max32002/naikaifont@1.0/webfont/NaikaiFont-Regular-Lite.woff) format("woff");
+}
+
+
+
+@font-face {
+    font-family: font2;
+    src: url(../css/NotoSansTC-Medium.otf);
+}
+
+// .star{
+//     max-height: 25px;
+// }
+
+#sideBar {
+    transition: 0.5s;
+    /* left: -100%; */
+    z-index: 19;
+    background: rgba(0, 0, 0, 0.7);
+    overflow: visible;
+    /* --bs-bg-opacity: 0.9; */
+    width: 250px;
+    white-space: nowrap;
+
+    .sideSwitch {
+        padding: 0;
+        height: 2.5rem;
+        aspect-ratio: 1;
+        left: 100%;
+        background: rgba(0, 0, 0, 0);
+    }
+
+    .menuList {
+        div {
+            color: $themeColor;
+            font-size: 1.5rem;
+            list-style-position: inside;
+            list-style-type: none;
+            p{
+                cursor: pointer;
+            }
+
+            &:hover {
+                color: $colorHover;
+            }
+
+            >div {
+                border-left: solid;
+                border-color: #ffdca4;
+            }
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        #cus-box {
+            div {
+                border: none;
+            }
+
+            #serchTag-box {
+                white-space: normal;
+                width: 80%;
+            }
+
+            #side3 {
+                position: relative;
+
+                >button {
+                    padding-right: 2rem;
+                    width: 25%;
+                    transform: translate(-50%, -50%);
+                    left: 50%;
+                    position: absolute;
+                    border: none;
+                    height: 2rem;
+                    background-color: rgba(241, 241, 241, 0.001);
+                    color: $themeColor;
+
+                    &.up {
+                        top: -1rem;
+                    }
+
+                    &.sown {
+                        bottom: -1rem;
+                    }
+                }
+
+                .tag-box {
+                    margin-top: 1rem;
+                    margin-bottom: 1rem;
+                    white-space: normal;
+                    width: 100%;
+                    overflow: hidden;
+                    height: 12rem;
+                    // padding-bottom: 1rem;
+
+                }
+            }
+        }
+    }
+
+    #serchTag-box {
+        .tag {
+            background-color: #fff;
+            color: black;
+        }
+    }
+}
+
+@keyframes anima1 {
+    from {
+        opacity: 0;
+
+        transform: translateX(50%);
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 100;
+    }
+}
+
+@keyframes anima2 {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 100;
+    }
+}
+
+@keyframes anima3 {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-75%);
+    }
+}
+
+.anima1 {
+    animation: anima1 0.5s ease-in;
+}
+
+.anima2 {
+    animation: anima2 0.5s 0.5s ease-in forwards;
+}
+
+.menuPage {
+    background-color: $pageColor;
+    margin: 2rem;
+    max-width: 60rem;
+    font-family: naikaifont;
+    text-shadow: 1px 1px 8px rgba(145, 53, 0, 0.4);
+
+    font-style: italic;
+
+    .imgBox {
+        border-radius: 1rem;
+        background: rgba(0, 0, 0, 0.5);
+        height: 35rem;
+    }
+
+    .cardImg {
+        object-fit: cover;
+        width: 8rem;
+        height: 100%;
+    }
+
+    .menu-section {
+        --bs-bg-opacity: 0.5;
+        height: 100%;
+        max-height: 37rem;
+        overflow: hidden;
+        border-radius: 1rem;
+
+        .bigImg {
+            opacity: 0;
+            width: 100%;
+            height: 80%;
+            object-fit: cover;
+        }
+
+        .menu-cardBox {
+            height: 35rem;
+            border-radius: 1rem;
+
+            .menu-card {
+                background-color: rgba(0, 0, 0, 0.5);
+                border-radius: 1rem;
+                height: 8rem;
+                color: $themeColor;
+                box-shadow: 2px 1px 5px 0px rgba(255, 255, 255, 0.2);
+                cursor: pointer;
+                user-select: none;
+
+                .con-con {
+                    padding-left: 1rem;
+
+                }
+
+                .tagBox {
+                    white-space: nowrap;
+                    animation: anima3 3s linear alternate infinite;
+                    animation-play-state: paused;
+
+                    // width: max-content;
+                }
+
+                &:hover {
+                    background: linear-gradient(135deg,
+                            rgba(86, 86, 86, 0.8),
+                            rgba(0, 0, 0, 0.8),
+                            rgba(0, 0, 0, 0.8),
+                            rgba(0, 0, 0, 0.8));
+                    transform: scale(1.05);
+                    transition: scale 0.5s ease-in-out;
+
+                    .tagBox {
+                        // animation: anima3 3s linear alternate infinite;
+                        animation-play-state: running;
+                    }
+                }
+
+                .fs-7 {
+                    font-size: 1rem;
+                }
+
+                .star {
+                    filter: drop-shadow(10);
+                    max-height: 15px;
+                }
+            }
+        }
+    }
+
+    // .card-cart {
+    //     position: absolute;
+    //     top: 0.5rem;
+    //     right: 0;
+    // }
+}
+
+@media screen and (max-width: 993px) {
+    .menuPage {
+        .menu-section {
+            max-height: 50rem;
+
+            .menu-cardBox {
+                height: auto;
+
+                .menu-card {
+                    .con-con {
+                        padding-left: 0;
+                    }
+
+                    &:hover {
+                        .tagBox {
+                            animation: none;
+                        }
+                    }
+                }
+                .tagBox-con{
+                    padding-right: 1.5rem;
+                    .tagBox {
+                        overflow: hidden;
+                        white-space: nowrap;
+                        height: 100%;
+                        display: flex;
+                        align-items:flex-end;
+                        .tag{
+                            font-size: 0.8rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1300px) and (min-width: 993px) {
+    .card-component {
+        max-width: 6rem;
+    }
+}
+
+.bigCardOutside {
+    z-index: 1030;
+    width: 100%;
+    height: 100%;
+    background: rgba(248, 248, 248, 0);
+    // display: flex;
+    // flex-wrap: wrap;
+    // align-content:space-around;
+
+    .bigCard-content {
+        z-index: 1031;
+        overflow-y: auto;
+    }
+
+    @keyframes arror {
+        from {
+            transform: scale(1.1) translateX(0);
+        }
+
+        to {
+            transform: scale(1.1) translateX(-5px);
+
+        }
+    }
+
+    #bigCard {
+        .bi-arrow-left {
+            &:hover {
+                animation:arror 0.5s infinite ease-out alternate ;
+                color: rgb(229, 229, 229);
+            }
+        }
+
+        position: relative;
+        top: 5vh;
+        width: 50rem;
+        height: 80vh;
+        max-width: 90vw;
+        margin: auto;
+        background: $themeColor2;
+        color: $themeColor;
+        border-radius: 1rem;
+        font-family: naikaifont;
+
+        .star {
+            max-height: 25px;
+        }
+
+        .cardText {
+            font-size: 1.4rem;
+        }
+
+        .addShopCart {
+            text-decoration: none;
+        }
+
+        .bigCardImg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .addShopCart {
+            background: #fff;
+
+            &:hover {
+                background: #d68910;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #bigCard {
+        width: 90%;
+    }
+}
+
+.tag {
+    background: #6610f2;
+    color: #fff;
+    display: inline-block;
+    padding: 0 0.5rem;
+    font-size: 1 rem;
+    margin: 0.2rem 0.1rem;
+    font-family: font2;
+}
+
+#shopCartBtn {
+    display: flex;
+    z-index: 9;
+    width: 4rem;
+    aspect-ratio: 1/1;
+    border: black solid 4px;
+    position: fixed;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    right: 2rem;
+    padding-right: 0.1rem;
+    bottom: 3rem;
+
+    &:hover {
+        border-color: rgb(40, 40, 40);
+        border-width: 5px;
+        background-color: rgb(255, 193, 7, 0.5);
+    }
+
+    img {
+        width: 60%;
+        aspect-ratio: 1/1;
+
+        &:hover {
+            width: 70%;
+        }
+    }
+}
+
+#shopCart {
+    transition: 0.5s;
+    z-index: 1041;
+    background: rgba(0, 0, 0, 0.7);
+    /* overflow: visible; */
+    width: 330px;
+    right: 0;
+    top: 4.5rem;
+    overflow-y: auto;
+    height: calc(100vh - (4.5rem));
+
+    .shopCart-card {
+        border-bottom: rgb(102, 102, 102) 1px solid;
+        width: 100%;
+        color: #fff;
+    }
+
+    .delButton {
+        background-color: rgba(255, 0, 0, 0.3);
+        color: rgba(255, 255, 255, 0.3);
+
+        &:hover {
+            background-color: rgba(255, 0, 0, 0.5);
+            color: rgba(255, 255, 255, 1);
+        }
+    }
+
+    .closeIcon {
+        width: 2rem;
+        aspect-ratio: 1/1;
+        font-size: 1rem;
+        color: white;
+        text-align: center;
+
+        &:hover {
+            background-color: rgba(114, 0, 0, 0.3);
+        }
+    }
+}

@@ -1,0 +1,236 @@
+@keyframes bookCard {
+    from {
+        width: 160px;
+        // transform: translate(0 0);
+    }
+
+    to {
+        width: 80%;
+        // transform: translate(-50% -50%);
+    }
+}
+
+#reserveData {
+    .option {
+        padding: 0 1.125rem;
+        
+        @media screen and (max-width: 786px) {
+            & {
+                justify-content: center;
+                display: flex;
+            }
+            button{
+                margin: 0 1rem;
+            }
+        }
+
+        button {
+            font-weight: 700;
+            margin: 0 2rem;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            background-color: #e3e3e3;
+            &:hover{
+                background-color: #ffffff;
+                
+            }
+            &:active{
+                background-color: #c4c4c4d7;
+                
+            }
+        }
+    }
+
+    #order-box {
+        width: 100vw;
+        overflow: hidden;
+        scroll-behavior: smooth;
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        left: 0;
+
+        .main {
+            width: 200%;
+            display: flex;
+            flex-direction: row;
+            transition: all 1s linear;
+
+            section {
+                min-height: 10rem;
+                display: flex;
+                justify-content: start;
+                width: 100%;
+                flex-wrap: wrap;
+                position: relative;
+                // margin: 0 3rem;
+                padding-left: 3rem;
+                padding-right: 8rem;
+
+                @media screen and (max-width: 786px) {
+                    & {
+                        justify-content: center;
+                        padding-left: 0;
+                        padding-right: 0;
+                    }
+                }
+
+                .book-card {
+                    padding: 1rem;
+                    background-color: rgb(240, 240, 240,0.9);
+                    border-radius: 1rem;
+                    width: 220px;
+                    height: 300px;
+                    // aspect-ratio: 2/2.5;
+                    box-shadow: 2px 2px 6px rgb(255, 255, 255, 0.5);
+                    position: relative;
+                    user-select: none;
+                    margin: 2rem 1rem;
+                    transition: all 0.5 ease-in;
+
+                    .order-item {
+                        margin-bottom: 1rem;
+                    }
+                    button {
+                        border-radius: 0.5rem;
+                        border: none;
+                        box-shadow: 1px 1px 3px rgb(113, 113, 113);
+                        background-color: white;
+                    }
+                    &:active{
+                        background-color: rgb(209, 209, 209);
+                    }
+                    &.active {
+                        background-color: white;
+                        &:hover {
+                            cursor: auto;
+                        }
+
+                        user-select: auto;
+                        transform: translate(-50% -50%);
+                        position: fixed;
+                        max-width: 60rem;
+                        width: 80%;
+                        z-index: 20;
+                        // aspect-ratio: inherit;
+                        top: 8%;
+                        left: 8%;
+                        min-height: 50%;
+                        max-height: 80vh;
+                        height: auto;
+                        overflow-y: auto;
+
+                        .body {
+                            height: auto;
+
+                            .row {
+                                div.col:nth-child(1) {
+                                    flex: 1 0 0;
+                                }
+
+                                div.col:nth-child(n + 3) {
+                                    display: block;
+                                }
+                            }
+                        }
+
+                        .footer .toDetail {
+                            display: none;
+                        }
+                    }
+
+                    &:hover {
+                        cursor: pointer;
+                        background-color: rgb(255, 255, 255);
+                        box-shadow: 2px 2px 6px rgb(255, 255, 255, 0.5), 0 0 10px rgb(255, 255, 255, 0.5);
+
+                        .body .toDetail {
+                            background-color: rgb(250, 250, 250);
+                        }
+                    }
+
+                    .header {
+                        // box-shadow: 0px 2px black ;
+                        border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+                        .d-flex{
+                            align-items: flex-end;
+                            justify-content: space-between;
+                        }
+                        h3 {
+                            color: red;
+                        }
+                    }
+
+                    .body {
+                        overflow: hidden;
+                        text-align: end;
+                        height: 10rem;
+
+                        // position: relative;
+                        &::-webkit-scrollbar {
+                            width: 4px;
+                            background-color: rgb(185, 185, 185);
+                        }
+
+                        &::-webkit-scrollbar-track {
+                            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0);
+                            background-color: #ffffff;
+                        }
+
+                        &::-webkit-scrollbar-thumb {
+                            background-color: rgb(198, 198, 198);
+                            box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+                        }
+
+                        &:hover {
+                            overflow-y: auto;
+                        }
+
+                        .row {
+                            align-items: center;
+
+                            div.col:nth-child(1) {
+                                flex: 3 1 0;
+                            }
+
+                            div.col:nth-child(n + 3) {
+                                display: none;
+                            }
+                        }
+
+                        .order-body .row {
+                            box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
+                            padding: 0.5rem 0;
+
+                            button {
+                                padding: 0.2rem 0.5rem;
+                            }
+                        }
+                    }
+
+                    .footer {
+                        // border-top: 0.5px gray solid;
+                        width: 100%;
+
+                        .toDetail {
+                            font-size: 0.7rem;
+                            color: gray;
+                        }
+
+                        p {
+                            color: black;
+                            padding: 0;
+                            margin: 0;
+                            text-align: end;
+                            font-size: 1.2rem;
+
+                            &.total::before {
+                                content: "共：$";
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

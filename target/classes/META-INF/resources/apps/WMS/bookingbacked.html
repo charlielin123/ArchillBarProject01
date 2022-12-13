@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArchilBarIndex</title>
+
+
+    <link rel="stylesheet" href="/apps/menu/styles/navAndBg.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <!-- datatable連結  -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+    <!-- css RWD連結 -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.3.0/css/responsive.dataTables.min.css">
+    <link rel="stylesheet" href="/apps/WMS/css/datatable.css">
+    <link rel="stylesheet" href=\apps\WMS\css\backbar.css>
+
+
+</head>
+
+<body>
+
+    <!-- 主頁進入畫面 -->
+    <!-- 管理頁籤 -->
+    <div class="all">
+        <!-- 左邊 -->
+        <div class="container-left">
+
+            <!-- 左邊結束 -->
+        </div>
+        <!-- 右邊 -->
+        <div style="background-color: rgba(233, 226, 226, 0.9);width: 100%;  margin-right: 0.5vh; margin-left: 0.5vh;   border-radius: 15px;"
+            class="">
+            <!-- 標題 -->
+            <div class="pageout">
+                <div class="page" style="width: 140px;">訂位管理</div>
+            </div>
+
+            <table id="table_id" class="display responsive nowrap" style="width:100%">
+                <thead class="" style=>
+                    <!-- 欄位標題 -->
+                    <tr>
+                        <th>訂位編號</th>
+                        <th>會員名稱</th>
+                        <th>性別</th>
+                        <th>生日</th>
+                        <th>手機</th>
+                        <th>訂位日期及時間</th>
+                        <th>人數</th>
+                        <th>桌位</th>
+                        <th>狀態</th>
+
+                        <th><a href="/bak/bookingForMember"
+                                style="padding:1rem 2rem; background-color: rgba(128, 128, 128, 0.4); border-radius:2px;">訂位</a>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="productList" id="">
+                    <!-- 欄位內容 -->
+
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>
+    </div>
+
+
+
+
+    <!-- js RWD -->
+    <script src="/apps/js/jquery-3.6.1.min.js"></script>
+    <script type="text/javascript" charset="utf8"
+        src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    <script src="/apps/menu/js/navAndBg.js"></script>
+    <link rel="stylesheet" href=\apps\WMS\css\barli.css>
+
+
+
+    <script>
+
+
+        // datetable
+        $(document).ready(function () {
+            let tableStatus = {
+                1: "未入座",
+                2: "已入座",
+                3: "完成"
+            }
+            $('#table_id').DataTable({
+
+                "ajax": '/bak/booking/all', //抓api url
+                "columns": [
+                    { data: 'b_id', title: "訂位編號", },
+                    { data: 'member.memberName', title: "會員名稱" },
+                    { data: 'member.sex', title: "性別" },
+                    { data: 'member.birthday', title: "生日" },
+                    { data: 'member.phone', title: "手機" },
+                    { data: 'bookDate', title: "訂位日期及時間" },
+                    { data: 'numOfPpl', title: '人數' },
+                    { data: "tableNum", title: "桌位" },
+                    {
+                        data: null, title: "狀態",
+                        render: function (data, type, row) {
+                            console.log(tableStatus[(row.status)]);
+                            return tableStatus[row.status];
+                        },
+                    },
+                    {
+                        data: null, title: `<a href="/bak/bookingForMember" style="padding:0.5rem 1rem; background-color: rgba(128, 128, 128, 0.4); border-radius:2px;">訂位</a>`,
+                        render: function (data, type, row) {
+                            return '<button class="delete btn btn-danger btn-xs" Id="' + row.b_id + '">刪除</button> '
+                        },
+                    },
+                ],
+                columnDefs: [
+                    {
+                        orderable: false,
+                        targets: [9],
+                    },
+                ],
+                //搜尋功能
+                "searching": true,
+                //每頁幾筆
+                // "lengthMenu": [2, 10, 20],
+
+            });
+
+
+        });
+
+        // 初始化刪除按钮  
+        $('#table_id tbody').on('click', 'button.delete', function (e) {
+            e.preventDefault();
+
+            if (confirm("確定要刪除此訂位?")) {
+                let b_id = $(this).attr("id");
+                $.ajax({
+                    url: '/bak/booking/delect/' + b_id,
+                    contentType: 'application/json; chartset=UTF-8',  // 送過去的格式
+                    method: 'get',
+                    success: function (result) {
+                        alert(result);
+                        window.location.reload();
+                    },
+                    error: function (err) {
+                        console.log(err);
+                    }
+                })
+            }
+
+        });
+
+
+
+
+
+    </script>
+    <script src="/apps/WMS/js/back_bar.js"></script>
+    <link rel="stylesheet" href=\apps\WMS\css\backbar.css>
+
+</body>
+
+</html>

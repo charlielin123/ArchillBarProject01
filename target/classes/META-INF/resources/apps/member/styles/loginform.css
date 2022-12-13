@@ -1,0 +1,55 @@
+.outside {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 5rem);
+  width: 100vw;
+}
+
+#login-box {
+  width: 460px;
+}
+#login-box .card-body {
+  width: 80%;
+  margin: 1rem auto;
+}
+#login-box .card-body .gd .col {
+  display: flex;
+  align-items: center;
+}
+#login-box .card-body .gd .col .left {
+  width: 50%;
+}
+#login-box .card-body .gd .col .right {
+  width: 50%;
+  justify-self: end;
+  display: flex;
+  justify-content: end;
+}
+
+#error-box .modal-content {
+  width: 350px;
+  margin: auto;
+}
+#error-box .modal-header {
+  padding: 0.5rem;
+  position: relative;
+}
+#error-box .modal-header h2 {
+  text-align: center;
+  width: 100%;
+}
+#error-box .modal-body {
+  padding: 1rem 1.5rem;
+}
+#error-box .modal-footer {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+}
+
+@media screen and (max-width: 768px) {
+  #login-box {
+    width: 90%;
+  }
+}/*# sourceMappingURL=loginform.css.map */

@@ -1,0 +1,78 @@
+.outside {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 5rem);
+    width: 100vw;
+
+}
+
+#login-box {
+    width: 460px;
+
+    .card-body {
+        width: 80%;
+        margin: 1rem auto;
+
+        .gd {
+            .col {
+                display: flex;
+                align-items: center;
+
+                .left {
+
+                    width: 50%;
+                }
+
+                .right {
+                    width: 50%;
+                    justify-self: end;
+                    display: flex;
+                    justify-content: end;
+                }
+            }
+        }
+
+
+    }
+}
+
+#error-box {
+    .modal-content{
+        width: 350px;
+        margin: auto;
+    }
+    
+    .modal-header {
+        padding: 0.5rem;
+        position: relative;
+
+        h2 {
+            text-align: center;
+            width: 100%;
+        }
+    }
+    .modal-body{
+        padding: 1rem 1.5rem;
+    }
+
+    .modal-footer {
+        // border: 0px none;
+        display: flex;
+        justify-content: center;
+        // background-color: rebeccapurple;
+        padding: 0;
+    }
+}
+
+
+
+
+@media screen and(max-width:768px) {
+    #login-box {
+        // background-color: red;
+        width: 90%;
+
+
+    }
+}

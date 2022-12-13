@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/apps/menu/styles/navAndBg.css">
+    <title>訂位</title>
+
+
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        .main {
+            width: 90%;
+            max-width: 900px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 0.5rem;
+            padding: 2rem 1rem;
+
+
+        }
+
+        .tableContainer {
+            background-color: rgba(89, 89, 89, 0.8);
+            max-width: 40rem;
+            padding: 1px;
+            padding-bottom: 2rem;
+            border: solid;
+            /* aspect-ratio: 1.5/2; */
+        }
+
+        .tableA {
+            /* font-size: 0.2rem; */
+            width: 6vw;
+            aspect-ratio: 1/1;
+            max-width: 2rem;
+            background-color: rgba(255, 255, 255, 0.5);
+            border: 1px solid black;
+            border-radius: 50%;
+            margin-top: 0.5rem;
+            align-content: center;
+            padding-top: 4px;
+
+        }
+
+
+        .tableB {
+            width: 18vw;
+            max-width: 120px;
+            aspect-ratio: 1/1;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 0.5rem;
+            border: 2px solid;
+            margin-top: 5rem;
+        }
+
+        .tableC {
+            height: 18vw;
+            max-height: 120px;
+            aspect-ratio: 2/4;
+            border-radius: 0.5rem;
+            border: 2px solid;
+            background-color: rgba(255, 255, 255, 0.5);
+            margin-top: 5rem;
+        }
+
+        .tt1 {
+            width: 100%;
+            height: 23vw;
+            max-height: 120px;
+            border-radius: 0 0 1.5rem 0;
+            border: 2px solid;
+            background-color: brown;
+        }
+
+        .selectTable {
+            background-color: rgba(255, 166, 0, 0.7);
+        }
+
+        .inableTable {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container justify-content-start" style="padding-top: 5rem;">
+        <div class="container main">
+            <div class="row">
+                <div class="col text-white container fs-4 align-self-center" style="max-width: 40rem;">
+                    <div class="row my-1">
+                        <div class="col-12 col-md-3">
+                            <label for="bookDate">日期：</label>
+                        </div>
+                        <div class="col">
+                            <input type="date" name="bookDate" id="bookDate" class="w-100">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <hr>
+            <div class="row justify-content-center collapse" id="tableTable">
+                <div class="col">
+                    <div class="container tableContainer gx-0 text-center w-100">
+                        <div class="row">
+                            <div class="container area-A w-100 ">
+                                <div class="row w-100">
+                                    <div class="col-11">
+                                        <div class="tt1"></div>
+                                        <div class="d-flex justify-content-between px-md-3 align-middle">
+                                            <div class="tableA seat seat-1" sId="1" table="A1">A1</div>
+                                            <div class="tableA seat seat-1" sId="2" table="A2">A2</div>
+                                            <div class="tableA seat seat-1" sId="3" table="A3">A3</div>
+                                            <div class="tableA seat seat-1" sId="4" table="A4">A4</div>
+                                            <div class="tableA seat seat-1" sId="5" table="A5">A5</div>
+                                            <div class="tableA seat seat-1" sId="6" table="A6">A6</div>
+                                            <div class="tableA seat seat-1" sId="7" table="A7">A7</div>
+                                            <div class="tableA seat seat-1" sId="8" table="A8">A8</div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-1 flex-column d-flex p-0">
+                                        <div class="tableA seat" sId="10" table="A10">A10</div>
+                                        <div class="tableA mt-md-4 seat" sId="9" table="A9">A9</div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="container area-B text-center ">
+                                <div class="row">
+
+                                    <div class="col">
+                                        <div class="tableB seat seat-4" sId="11" table="B1">B1</div>
+                                        <div class="tableB seat seat-4" sId="12" table="B2">B2</div>
+
+                                    </div>
+                                    <div class="col d-flex flex-column align-items-end ">
+                                        <div class="tableC seat seat-2" sId="13" table="C1">C1</div>
+                                        <div class="tableC seat seat-2" sId="14" table="C2">C2</div>
+
+                                    </div>
+                                    <div class="col d-flex flex-column align-items-end ">
+                                        <div class="tableC seat seat-2" sId="15" table="C3">C3</div>
+                                        <div class="tableC seat seat-2" sId="16" table="C4">C4</div>
+
+                                    </div>
+                                    <div class="col d-flex flex-column align-items-end ">
+                                        <div class="tableC seat seat-2" sId="17" table="C5">C5</div>
+                                        <div class="tableC seat seat-2" sId="18" table="C6">C6</div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+            </div>
+            <hr>
+            <div class="row">
+
+                <div class="col text-white container fs-4 align-self-center" style="max-width: 40rem;">
+                   
+                    <div class="row my-1">
+                        <div class="col-12 col-md-3">
+                            <label for="tableNum">桌號：</label>
+                        </div>
+                        <div class="col">
+                            <input type="text" placeholder="請點選圖片選擇" readonly class="w-100" name="tableNum"
+                                id="tableNum">
+
+                        </div>
+
+                    </div>
+                    <div class="row my-1">
+                        <div class="col-12 col-md-3">
+                            <label for="numOfPpl">人數：</label>
+                        </div>
+                        <div class="col">
+                            <select name="numOfPpl" id="numOfPpl" class="w-100">
+                                <option value="">請選擇人數</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                                <option value="14">14</option>
+                                <option value="15">15</option>
+                                <option value="16">16</option>
+                                <option value="17">17</option>
+                                <option value="18">18</option>
+                                <option value="19">19</option>
+                                <option value="20">20</option>
+                                <option value="21">21</option>
+                                <option value="22">22</option>
+                                <option value="23">23</option>
+                                <option value="24">24</option>
+                                <option value="25">25</option>
+                                <option value="26">26</option>
+                                <option value="27">27</option>
+                                <option value="28">28</option>
+                                <option value="29">29</option>
+                                <option value="30">30</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+
+                    <div class="row my-1">
+                        <hr>
+                        <div class="col-12 col-md-3">
+                            <label for="memberSerch">會員搜尋：</label>
+                        </div>
+                        <div class="col-8 col-md-7">
+                            <input type="text " style="width:100% ;" id="memberSerch">
+                        </div>
+                        <div class="col-4 col-md-2">
+                            <button id="memberSerch-btn">查詢</button>
+                        </div>
+
+                        <div class="col-12 col-md-3">
+                            <label for="memberSerch-select">結果：</label>
+                        </div>
+                        <div class="col-12 col-md-8">
+                            <select name="memberSerch-select" id="memberSerch-select" class="w-75"
+                                style="z-index:3 ;"></select>
+                        </div>
+
+                    </div>
+                    <div class="row my-1">
+                        <div class="col">
+
+                        </div>
+
+                    </div>
+                    <div class="row my-1">
+                        <div class="col ">
+                            <button id="submit" disabled type="" class="bg-warning border-0 w-100">立即訂位</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.1.js"
+        integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <script src="/apps/menu/js/navAndBg.js"></script>
+    <script src="/apps/js/model.js"></script>
+    <script>
+
+        // 自動填入會員電話
+        let getPhone = function () {
+            $("#phoneNum").val(thisMember.phone);
+
+        }
+        setTimeout(getPhone, 100);
+
+        let seat1 = 0;
+        let seat2 = 0;
+        let seat4 = 0;
+        let tableList = [];
+        let tableList2 = [];
+
+
+
+        let count = 0;
+        function tableChange(obj) {
+            tableList = [];
+            count = 0;
+            $(".seat").removeClass("selectTable");
+            $(`.seat[sId="${obj.val()}"]`).addClass("selectTable");
+            let tables = $("#tableNum").val();
+            tableList = tables.split("+");
+            $(".seat").removeClass("selectTable");
+            for (let i = 0; i < tableList.length; i++) {
+                $(`.seat[table="${tableList[i]}"]`).addClass("selectTable");
+
+            }
+            seat1 = $(".selectTable.seat-1").length;
+            seat2 = $(".selectTable.seat-2").length;
+            seat4 = $(".selectTable.seat-4").length;
+            count = seat1 + seat2 * 2 + seat4 * 4;
+            checkNum();
+
+        }
+
+
+        // 按桌子第一次加入至清單
+        let oneClick = function () {
+            let select = $(this).text();
+            let pre = $("#tableNum").val();
+            if (pre != "") {
+                $("#tableNum").val(pre + "+" + select);
+            } else {
+                $("#tableNum").val(select);
+            }
+            tableList2.push($(this).attr("sId"));
+            tableChange($(this));
+        }
+
+        // 按桌子第二次從清單移除
+        let dClick = function () {
+            tableList2 = [];
+            $(".seat").off("click", oneClick);
+            // $(".seat").removeClass("selectTable");
+            // $("#tableNum").val("");
+            $(".seat").one("click", oneClick);
+            checkTable();
+
+        }
+
+        // 檢查人數和桌子
+        let checkNum = function () {
+            let checked = 0;
+            if ($("#numOfPpl").val() > count) {
+                $("#errorMsg").text("請加選座位或減少人數").css("color", "red");
+                checked = 0;
+
+            } else if ($("#numOfPpl").val() < count) {
+                if ($("#numOfPpl").val() == count - 1 && seat1 == 0) {
+                    $("#errorMsg").text("Checked").css("color", "green");
+                    checked = 1;
+                } else {
+                    $("#errorMsg").text("請增加人數或改選座位").css("color", "red");
+                    checked = 0;
+                }
+
+            } else {
+                $("#errorMsg").text("Checked").css("color", "green");
+                checked = 1;
+            }
+            checked == 1 ? $("#submit").removeAttr("disabled") : $("#submit").attr("disabled", "");
+
+        }
+
+        // 檢查日期是否有選擇
+        let checkDate = function () {
+            if ($("#bookDate").val() != "") {
+                dClick();
+                checkTable();
+                $("#tableTable").removeClass("show")
+                $("#tableTable").addClass("show")
+            } else {
+                alert("請選擇日期");
+            }
+        }
+
+        // 從伺服器得訂位狀態
+        let checkTable = function () {
+
+            $("#tableNum").val("");
+            $(".seat").removeClass("selectTable");
+            $(".seat").removeClass("inableTable");
+            $.ajax({
+                url: '/booking/status/date/' + $("#bookDate").val(),
+                contentType: 'application/json; chartset=UTF-8',  // 送過去的格式
+                method: 'get',
+                // data: JSON.stringify(json),
+                dataType: 'json', // 回傳的資料型別
+                success: function (result) {
+                    result.forEach(element => {
+                        let num = element.table;
+                        for (let i = 0; i < $(".seat").length; i++) {
+                            // console.log("num="+num+";seat:"+$(".seat").eq(i).attr("sId"));
+                            if ($(".seat").eq(i).attr("sId") == num) {
+                                $(".seat").eq(i).off("click", oneClick).addClass("inableTable");
+
+                            }
+                        }
+
+                    });
+
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            })
+        }
+
+
+
+
+        $(".seat").one("click", oneClick);
+        $(".seat").dblclick(dClick);
+        $("#numOfPpl").on("change", checkNum);
+        $("#bookDate").on("change", checkDate);
+
+        // 訂位送出
+        $("#submit").click(function () {
+
+            let json1 = new Object;
+            json1["phone"] = $("#memberSerch").val();
+            json1["tableList"] = tableList2;
+            json1["ppl"] = $("#numOfPpl").val();
+            json1["date"] = $("#bookDate").val();
+            json1["m_id"] = $("#memberSerch-select").val();
+            let raw = JSON.stringify(json1);
+            console.log(raw);
+
+            $.ajax({
+                url: '/bak/booking/book',
+                contentType: 'application/json; chartset=UTF-8',  // 送過去的格式
+                method: 'post',
+                data: raw,
+                dataType: 'json', // 回傳的資料型別
+                success: function (result) {
+
+                    if (result == true) {
+                        alert("訂位成功!跳轉至菜單頁面...");
+                        window.location.assign("/menu");
+                    } else {
+                        alert("訂位失敗，請重試");
+                    }
+                    // window.location.reload();
+
+                },
+                error: function (err) {
+                    console.log(err);
+                    alert("訂位失敗，請重試");
+                }
+            })
+        })
+        findMember();
+
+        function isAdmin() {
+            $.ajax({
+                url: '/member/isLongin',
+                contentType: 'application/json; chartset=UTF-8',  // 送過去的格式
+                method: 'get',
+                dataType: 'json', // 回傳的資料型別
+                success: function (result) {
+                    if (result.admin) {
+                        alert("admin!!");
+                    }
+
+
+                },
+                error: function (err) {
+                    MemberCookie();
+                }
+            })
+        }
+
+        function findMember() {
+            $("#memberSerch-btn").click(function () {
+                
+                let memberPhone=$("#memberSerch").val();
+
+                $.ajax({
+                    url: '/bak/member/phone/?phone='+memberPhone,
+                    contentType: 'application/json; chartset=UTF-8',  // 送過去的格式
+                    method: 'get',
+                    dataType: 'json', // 回傳的資料型別
+                    success: function (result) {
+                        result.forEach(member => {
+                            console.log(member)
+                            
+                            $("#memberSerch-select").append(`
+                            <option value="${member.m_id}">${member.memberName}</option>
+       
+                            `);
+                        });
+
+                    },
+                    error: function (err) {
+                        console.log(err);
+                        
+                    }
+                })
+            })
+        }
+
+
+
+    </script>
+</body>
+
+</html>

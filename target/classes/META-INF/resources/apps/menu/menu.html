@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MENU</title>
+    <link rel="stylesheet" href="\apps\menu\styles\menu.css">
+    <link rel="stylesheet" href="\apps\menu\styles\navAndBg.css">
+
+</head>
+
+<body class="closeScroll">
+    <div id="loadingPage" class="loading">
+        <div class="preloader">
+            <div class="preloader__square"></div>
+            <div class="preloader__square"></div>
+            <div class="preloader__square"></div>
+            <div class="preloader__square"></div>
+        </div>
+        <div class="status">A Chill
+            <span class="status__dot">B</span>
+            <span class="status__dot">A</span>
+            <span class="status__dot">R</span>
+        </div>
+    </div>
+
+
+    <!-- 彈出視窗 for 產品資訊&評論-->
+    <div class="bigCardOutside position-fixed d-none hbg">
+        <div class="position-relative overflow-hidden" id="bigCard">
+            <!-- 視窗頭 -->
+            <div class="position-absolute d-flex justify-content-start px-2"
+                style="width: 100%; height: 3rem; background-color: #d68910;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16" style="color: white;height: 100%;">
+                    <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+                  </svg>
+            </div>
+            <!-- 視窗尾 -->
+            <a class="position-absolute d-flex justify-content-center align-items-center addShopCart"
+                style="bottom: 0; width: 100%; height: 3rem;">
+                <img class="mb-1 p-0 d-inline h-75" src="/apps/menu/images/menuImg/shopping-cart.png" alt="">
+                <span class="m-0 p-0 text-black fs-5">加入購物車</span>
+            </a>
+            <!-- 內容 -->
+            <div class="px-3 bigCard-content w-100" style="margin:3.5rem 0 ; height: calc(100% - 7rem); ">
+
+                <div class="row border-white">
+                    <!-- 圖片 -->
+                    <div class="col-md-4 pb-2">
+                        <img class="bigCardImg w-100" src="/apps/menu/images/w5.jpg" alt="">
+                    </div>
+
+                    <div class="col-md-8">
+                        <!-- 標題 -->
+                        <div class="row ">
+                            <div class="col-8 justify-content-start">
+                                <h1 class="d-inline-block name m-0" style="text-align:center ;">馬定尼</h1>
+                                <div class="text-white ps-3 fs-5">成分：<span class="component"></span></div>
+                            </div>
+                            <div class="col-4 d-flex justify-content-end align-items-end">
+                                <div>
+                                    <!-- 星星數 -->
+                                    <div class=" d-flex justify-content-end">
+                                        <span class="h5 p-0 m-0 score"></span>x
+                                        <img class="star" src="/apps/menu/images/menuImg/star.png" alt="">
+                                    </div>
+                                    <!-- 價格 -->
+                                    <p class="d-inline-block h3">NT$ <span class="price"></span></p>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <!-- 說明區 -->
+                        <hr>
+                        <div class="row ">
+                            <p class="py-3 px-3 cardText"></p>
+                            <div id="tag-box"></div>
+                        </div>
+                        <hr>
+                    </div>
+
+                </div>
+                <!-- 評論區 -->
+                <div class="row container-fulid ">
+                    <div class="row border-bottom">
+                        <h2 class="mt-2 ">Chill友評論</h2>
+                    </div>
+                    <div class="">
+                        <table class="table table-dark ">
+                            <thead>
+                                <tr>
+                                    <th scope="col">用戶</th>
+                                    <th scope="col">評分</th>
+                                    <th scope="col">時間</th>
+                                    <th scope="col">評論</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody class="comment-box" id="comment-box">
+                            </tbody>
+                        </table>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- 修改評論彈出視窗 -->
+    <div class="modal fade" id="comment" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-white">
+                    <h5 class="modal-title" id="exampleModalLabel">評論區</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+
+                        <div class="input-group mb-3 text-center">
+
+                            <label for="score" class="input-group-text">評分:</label>
+                            <select name="score" id="score" class="form-control">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+
+                        </div>
+                        <div class="mb-3">
+                            <label for="message-text" class="col-form-label">心得:</label>
+                            <textarea class="form-control" id="message-text"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+                    <button type="button" class="btn btn-dark" id="comSubmit">送出</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 主頁進入畫面 -->
+    <div class="position-relative d-block">
+
+        <div class="" id="menu-main">
+
+            <!-- 購物車 -->
+            <div class="position-fixed hbg offcanvas offcanvas-end " id="shopCart">
+                <div class="position-relative">
+                    <!-- head -->
+                    <div class="position-absolute d-flex border-bottom" style="height: 2.5rem;">
+                        <div class="closeIcon align-self-center" onclick="shopCartModal.hide()">→</div>
+                        <h3 class="text-white w-100 px-4">購物車</h2>
+                    </div>
+
+                    <div class="position-absolute w-100 " style="top:2.5rem">
+                        <div class="shopCartBox" id="shopCartBox">
+
+                        </div>
+
+                        <!-- foot -->
+                        <div class="container">
+                            <div class="row mt-2">
+                                <p class="h3 text-white " style="text-align: end;">總計 NT$<span id="cart-total">0</span>
+                                </p>
+                            </div>
+
+                            <div class="row w-100" style="height: 2rem;">
+                                <div class="col-8 h-100">
+                                    <select class="w-100 mx-auto h-100 bg-dark text-white" name="bookingDate"
+                                        id="bookingDate">
+                                        <option selected value="">選擇訂位日期</option>
+
+                                    </select>
+                                </div>
+
+                                <div class="col-4 h-100 p-0 m-0">
+                                    <input type="button" class="w-100 h-100 bg-warning p-0 m-0" value="送出訂單"
+                                        style="border:none ;" id="submitOrder-btn">
+                                </div>
+
+                            </div>
+                        </div>
+                        <hr>
+
+                    </div>
+
+
+
+
+
+
+                </div>
+
+
+
+            </div>
+
+
+            <!-- 側邊選單 -->
+            <div class="h-100 position-fixed hbg" id="sideBar">
+
+                <div class="position-absolute sideSwitch">
+                    <img src="apps/menu/images/menuImg/menu.png" class="w-100" alt="">
+                </div>
+
+                <div class="d-inline-block w-100 ">
+                    <h2 class=" border-bottom border-white p-2 text-white">MEUN</h2>
+                    <div class="container gx-0 menuList">
+
+                        <div class="ps-4 mb-2" id="chefRecBox">
+                            <p class="border-bottom border-white d-inline-block w-75 py-2 ch-87" id="chefRec">主廚推薦</p>
+                            <div class="chefRec ms-4 ps-3">
+
+                            </div>
+
+                        </div>
+
+                        <div class="ps-4 mb-2" id="mealsBox">
+                            <p menu="main" class="border-bottom border-white d-inline-block w-75 py-2 ch-87">餐點</p>
+                            <div class="meals ms-4 ps-3 w-75 collapse multi-collapse show" id="side1">
+                                <a href="#">
+                                    <div class="ch-87" id="main">主餐</div>
+                                </a>
+                                <a href="#">
+                                    <div class="ch-87" id="appetizer">前菜</div>
+                                </a>
+                                <a href="#">
+                                    <div class="ch-87" id="soup">湯品</div>
+                                </a>
+                                <a href="#">
+                                    <div class="ch-87" id="dessert">甜點</div>
+                                </a>
+                                <a href="#">
+                                    <div class="ch-87" id="fried">炸物</div>
+                                </a>
+
+
+                            </div>
+
+                        </div>
+                        <div class="ps-4 mb-2" id="alcoholBox">
+                            <p  menu="classicAlcoho" class="border-bottom border-white d-inline-block w-75 py-2 ch-87">酒類</p>
+                            <div class="alcohol ms-4 ps-3 w-75 collapse multi-collapse show" id="side2">
+                                <a href="#">
+                                    <div class="ch-87" id="classicAlcoho">經典調酒</div>
+                                </a>
+                                <a href="#">
+
+                                    <div class="ch-87" id="originalAlcoho">原創調酒</div>
+                                </a>
+                                <a href="#">
+
+                                    <div class="ch-87" id="beerAlcoho">啤酒</div>
+                                </a>
+                            </div>
+
+                        </div>
+                        <div class="ps-4 mb-2" id="softDrinkBox">
+                            <p class="border-bottom border-white d-inline-block w-75 py-2 ch-87" id="softDrink">軟性飲料</p>
+                            <div class="softDrink ms-4 ps-3 w-75">
+
+                            </div>
+
+                        </div>
+
+                        <div class="ps-4 mb-2" id="cus-box">
+                            <p class="border-bottom border-white d-inline-block w-75 py-2 ch-87 cus" id="cus-p"
+                                data-bs-toggle="collapse" data-bs-target=".multi-collapse" aria-expanded="false"
+                                aria-controls="side3 side1 side2">自訂</p>
+                            <div class="" id="serchTag-box"></div>
+                            <div class="w-75 collapse multi-collapse" id="side3">
+
+                                <button type="button" class="up d-none">︽</button>
+                                <div class="tag-box">
+                                    <div class="" id="allTags" style="display: inline-block; color: white;">
+                                    </div>
+                                </div>
+                                <button type="button" class="down">︾</button>
+                            </div>
+
+                        </div>
+
+
+
+
+
+
+                    </div>
+                </div>
+
+
+
+            </div>
+
+            <!-- 主要區域 -->
+            <div class="container-fluid gx-0">
+                <div class="row w-100 ps-4 ch-01">
+
+                    <div class="col-lg-2 col-12" style=" height: 100%;width: 250px;">
+
+                    </div>
+                    <!-- 主要內容 -->
+                    <div class="col-lg p-0  " style="--bs-bg-opacity:0.05; ">
+                        <!-- menu page -->
+                        <div class="menuBox" data-bs-spy="scroll" data-bs-target="#siderBar" data-bs-offset="250"
+                            class="scrollspy-example" tabindex="0"></div>
+
+                        <footer class=" p-4 border-top footer w-100">
+                            <div class="container d-flex align-items-center justify-content-between">
+                                <p class="mb-0 text-muted">
+                                    &copy; 2022 ACB All rights reserved.
+                                </p>
+                                <ul class="nav">
+                                    <li class="nav-item"><a href="" class="nav-link text-muted">關於本站</a></li>
+                                    <li class="nav-item"><a href="" class="nav-link text-muted"></a></li>
+                                </ul>
+                            </div>
+                        </footer>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+    <script src="/apps/js/jquery-3.6.1.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script> -->
+    <script src="/apps/menu/js/navAndBg.js"></script>
+    <!-- <script src="/apps/menu/js/member.js"></script> -->
+    <script src="/apps/menu/js/menuTest.js"></script>
+    <script src="/apps\menu\js\editComment.js"></script>
+    <script src="/apps\menu\js\deleteComment.js"></script>
+    <script src="/apps/menu/js/menuMaker.js"></script>
+
+    <script>
+        // initNav();
+        insertShopCartIcon();
+
+
+
+    </script>
+</body>
+
+</html>

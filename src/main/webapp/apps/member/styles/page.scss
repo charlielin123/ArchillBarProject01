@@ -1,0 +1,54 @@
+.simple-pagination {
+     ul {
+        list-style: none;
+        text-align: center;
+        margin-bottom: 50px;
+        /* 固定在下方 */
+        position: fixed;
+        bottom: 20px;
+        // top: 20px;
+        left: 50%;
+        transform: translate(-50%);
+        width: 100%;
+    }
+
+    li {
+        display: inline-block;
+        margin-right: 10px;
+    }
+
+    li a {
+        font-size: 1.5rem;
+        color: black;
+        padding: 0.5rem;
+        text-decoration: none;
+        border: 1px solid rgb(255, 255, 255);
+        background-color: rgb(255, 255, 255, 0.2);
+        box-shadow: 1px 1px 1px gray;
+    }
+
+    .current {
+        color: rgb(234, 255, 2);
+        border: 1px solid rgba(255, 255, 255);
+        background-color: rgb(255, 255, 255, 0.2);
+        font-size: 1.5rem;
+        padding: 0.5rem;
+        box-shadow: 1px 1px 1px gray;
+        text-decoration: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .simple-pagination{
+
+        li a {
+            font-size: 18px;
+            padding: 3px 3px 3px 3px;
+        }
+    
+        .current {
+            font-size: 20px;
+            padding: 3px 3px 3px 3px;
+        }
+    }
+}

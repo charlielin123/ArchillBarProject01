@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArchilBarIndex</title>
+
+
+    <link rel="stylesheet" href="/apps/menu/styles/navAndBg.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <!-- datatable連結  -->
+ 
+
+
+
+    <link rel="stylesheet" href=\apps\WMS\css\backbar.css>
+
+
+</head>
+
+<body>
+
+    <!-- 主頁進入畫面 -->
+    <!-- 管理頁籤 -->
+    <div class="all">
+        <!-- 左邊 -->
+        <div class="container-left">
+
+            <!-- 左邊結束 -->
+        </div>
+        <!-- 右邊 -->
+        <div style="background-color: rgba(233, 226, 226, 0.9);width: 100%;  margin-right: 0.5vh; margin-left: 0.5vh;   border-radius: 15px;"
+            class="">
+            <!-- 標題 -->
+            <div class="pageout">
+                <div class="page" style="width: 140px;">會員管理</div>
+            </div>
+            <table class="table table-dark">
+                <thead>
+                    <tr>
+                        <th>會員編號</th>
+                        <th>會員名稱</th>
+                        <th>性別</th>
+                        <th>信箱</th>
+                        <th>手機</th>
+                        <th>生日</th>
+                        <th>註冊日期</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="memberinfo">
+
+                </tbody>
+            </table>
+            <div id="pagebutton" class="text-center">
+
+            </div>
+
+
+        </div>
+    </div>
+    </div>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Launch demo modal
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <table id="table-order" class="display responsive nowrap" style="width:100%">
+                        <thead class="" style=>
+                            <!-- 欄位標題 -->
+                            <tr>
+                                <th>會員編號</th>
+                                <th>會員名稱</th>
+                                <th>性別</th>
+                                <th>信箱</th>
+                                <th>手機</th>
+                                <th>生日</th>
+                                <th>註冊日期</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody class="productList" id="">
+                            <!-- 欄位內容 -->
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- js RWD -->
+    <script src="/apps/js/jquery-3.6.1.min.js"></script>
+    <script type="text/javascript" charset="utf8"
+        src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    <script src="/apps/menu/js/navAndBg.js"></script>
+    <script src="/apps/WMS/js/back_bar.js"></script>
+    <link rel="stylesheet" href=\apps\WMS\css\barli.css>
+
+
+
+    <script>
+        // // 初始化刪除按钮  
+        // $('#table_id tbody').on('click', 'button.delete', function (e) {
+        //     e.preventDefault();
+
+        //     if (confirm("確定要刪除該筆會員資料?")) {
+        //         let memberId = $(this).attr("id");
+        //         $.ajax({
+        //             url: '/bak/member/deleteCustomer/' + memberId,
+        //             contentType: 'application/json; chartset=UTF-8',  // 送過去的格式
+        //             method: 'get',
+        //             success: function (result) {
+        //                 alert(result);
+        //                 window.location.reload();
+        //             },
+        //             error: function (err) {
+        //                 console.log(err);
+        //             }
+        //         })
+        //     }
+
+        // });
+        //會員資料分頁初始讀入第一頁
+        $.ajax({
+            url: '/bak/member/findAllmember/1',
+            method: 'get',
+            success: function (result) {
+
+                for (let i = 0; i < result.content.length; i++) {
+                    $("#memberinfo").append(`
+                        <tr>
+                        <td>`+ result.content[i][0] + `</td>
+                        <td>`+ result.content[i][1] + `</td>
+                        <td>`+ result.content[i][2] + `</td>
+                        <td>`+ result.content[i][3] + `</td>
+                        <td>`+ result.content[i][4] + `</td>
+                        <td>`+ result.content[i][5] + `</td>
+                        <td>`+ result.content[i][6] + `</td>
+                        <td><button class="btn btn-danger deletebtn" id="`+ result.content[i][0] + `">刪除</button></td>
+                    </tr>`
+                    )
+
+                }
+                pagebtn(result);
+                deletemember();
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        })
+        //分頁按鈕
+        function pagebtn(result) {
+            for (let i = 1; i <= result.totalPages; i++) {
+                $("#pagebutton").append(
+                    `
+                <button class="btn btn-dark pagebtn" id="${i}">${i}</button>
+                `
+                )
+            }
+            $('.pagebtn').click(function () {
+                $("#memberinfo").empty();
+                $.ajax({
+                    url: '/bak/member/findAllmember/' + $(this).attr('id'),
+                    method: 'get',
+                    success: function (result) {
+
+                        for (let i = 0; i < result.content.length; i++) {
+                            $("#memberinfo").append(`
+                            <tr>
+                        <td>`+ result.content[i][0] + `</td>
+                        <td>`+ result.content[i][1] + `</td>
+                        <td>`+ result.content[i][2] + `</td>
+                        <td>`+ result.content[i][3] + `</td>
+                        <td>`+ result.content[i][4] + `</td>
+                        <td>`+ result.content[i][5] + `</td>
+                        <td>`+ result.content[i][6] + `</td>
+                        <td><button class="btn btn-danger deletebtn" id="`+ result.content[i][0] + `">刪除</button></td>
+                    </tr>`
+                            )
+
+                        }
+                        deletemember();
+                    },
+                    error: function (err) {
+                        console.log(err);
+                    }
+                })
+
+            })
+        }
+
+        //刪除按鈕
+        function deletemember() {
+            $('.deletebtn').click(function () {
+                alert($(this).attr('id'));
+                if (confirm("確定要刪除該筆會員資料?")) {
+                    $.ajax({
+                        url: '/bak/member/deleteCustomer/' + $(this).attr('id'),
+                        contentType: 'application/json; chartset=UTF-8',  // 送過去的格式
+                        method: 'get',
+                        success: function (result) {
+                            alert(result);
+                            window.location.reload();
+                        },
+                        error: function (err) {
+                            console.log(err);
+                        }
+                    })
+                }
+            })
+        }
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArchilBarIndex</title>
+    <link rel="stylesheet" href="/apps/menu/styles/navAndBg.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <!-- datatable連結  -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+    <!-- css RWD連結 -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.3.0/css/responsive.dataTables.min.css">
+    <link rel="stylesheet" href="/apps/WMS/css/datatable.css">
+
+    <link rel="stylesheet" href=\apps\WMS\css\product_style.css>
+
+</head>
+
+<body>
+
+    <!-- 主頁進入畫面 -->
+    <!-- 管理頁籤 -->
+    <div class="all">
+        <!-- 左邊 -->
+        <div class="container-left">
+
+            <!-- 左邊結束 -->
+        </div>
+        <!-- 右邊 -->
+        <div style="background-color: rgba(233, 226, 226, 0.9);width: 100%;  margin-right: 0.5vh; margin-left: 0.5vh;   border-radius: 15px;"
+            class="contauner-right">
+            <!-- 標題 -->
+            <div class="pageout">
+                <div class="page">商品管理</div>
+                <div class="page1">
+                    <a id="addPro-btn" style="font-size:20px; color: rgb(8, 8, 8);" class="btn popup-btn"
+                        href="#letmeopen">新增商品</a>
+                </div>
+            </div>
+
+            <table id="example" class=" table-striped dt-responsive nowrap" style="width:100%">
+                <thead class="" style=>
+                    <!-- 欄位標題 -->
+                    <tr>
+                        <th>照片</th>
+                        <th>編號</th>
+                        <th>名稱</th>
+                        <th>分類</th>
+                        <th>成分</th>
+                        <th>單價</th>
+                        <th>簡介</th>
+                        <th></th>
+
+                    </tr>
+                </thead>
+                <tbody class="productList" id="">
+                    <!-- 欄位內容 -->
+
+                </tbody>
+            </table>
+            <!-- 新增商品alert -->
+            <div class="popup-wrap" id="letmeopen">
+                <div class="popup-box transform-out container" style="min-width: 45rem;">
+                    <div class="d-none" name="pId"></div>
+                    <div class="row">
+                        <div class="col-4">
+                            <label for="type">種類：</label>
+                        </div>
+                        <div class="col-7">
+                            <select name="type" class="" id="type">
+                                <option value="main">主餐</option>
+                                <option value="appetizer">前菜</option>
+                                <option value="soup">湯品</option>
+                                <option value="dessert">點心</option>
+                                <option value="fried">炸物</option>
+                                <option value="classicAlcoho">經典調酒</option>
+                                <option value="originalAlcoho">原創調酒</option>
+                                <option value="beerAlcoho">啤酒</option>
+                                <option value="softDrink">軟性飲料 </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <label for="name">名稱：</label>
+                        </div>
+                        <div class="col-7">
+                            <input type="text" class="" name="name" id="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <label for="component">成分：</label>
+                        </div>
+                        <div class="col-7">
+                            <input type="text" name="component" class="" id="" value="">
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-4">
+                            <label for="info">簡介：</label>
+                        </div>
+                        <div class="col-7">
+                            <textarea class="" name="info"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-4">
+                            <label for="tags">TAGS</label>
+                            <button class="p-0 " id="addEmptyTag">+</button>
+                        </div>
+                        <div class="col-7 " id="tag-box">
+
+
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-4">
+                            <label for="price">價格：</label>
+                        </div>
+                        <div class="col-7">
+                            <input type="text" class="" name="price" id="" value="200">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <label for="imge">圖片：</label>
+                        </div>
+                        <div class="col-7">
+                            <input type="file" name="imge" id="imge" src="" alt="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <img src="" id="img1"
+                                style="width: 60%;min-height: 15rem ;max-height: 30rem; object-fit: cover;" alt="">
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="popsum">
+                        <button class="popdiv1 popup-close">取消</button>
+                        <button class="popdiv1" id="addProduct">確認</button>
+                    </div>
+                    <a class="close-btn popup-close" href="#">x</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- js RWD -->
+    <script src="/apps/js/jquery-3.6.1.min.js"></script>
+    <script type="text/javascript" charset="utf8"
+        src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/1.。12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    <script src="/apps/menu/js/navAndBg.js"></script>
+    <script src="/apps/WMS/js/addProduct.js"></script>
+    <script src="/apps/WMS/js/back_bar.js"></script>
+    <link rel="stylesheet" href=\apps\WMS\css\barli.css>
+
+    <script>
+
+        $('.pd').css('background-color', '#adadad')
+        // datetable
+
+        $(document).ready(function () {
+            let img1;
+            initEventBind();
+
+            // 建立DATA TABLE
+            $('#example').DataTable({
+
+                "ajax": '/product/all2', //抓api url
+                "columns": [
+                    {
+                        data: 'image', title: "照片",
+                        render: function (data, type, row) {
+                            return '<img style="width:100px; height:110px;" src="' + data + '"> '
+                        },
+                    },
+                    { data: 'p_id', title: "編號", },
+                    { data: 'p_name', title: "名稱" },
+                    { data: 'component', title: "成分" },
+                    { data: 'price', title: "價格" },
+                    {
+                        data: null, title: "簡介",
+                        render: function (data, type, row) {
+                            return '<div  style="display: flex;justify-content: center;"><p style="width:300px;white-space: break-spaces" class="m-0">' + row.info + '</p></div>';
+                        },
+
+
+                    },
+                    {
+                        data: null, title: "",
+                        render: function (data, type, row) {
+                            return '<div><button class="edit-btn popup-btn btn btn-secondary" href="#letmeopen" pId="' + row.p_id + '">修改</button></div> '
+                        },
+                    },
+                    {
+                        data: null, title: "",
+                        render: function (data, type, row) {
+                            return '<div><button  class="del-btn btn btn-secondary" pId="' + row.p_id + '">下架</button></div>'
+                        },
+                    },
+                ],
+
+                "initComplete": function (settings, json) {
+
+                    eventBind();
+
+
+                    $('#example').DataTable().on("draw", function () {
+
+                        eventBind();
+
+                    })
+                    $('#example').DataTable().on("stateLoaded.dt", function () {
+
+                    })
+
+                },
+
+                // 顯示多少筆
+                // "lengthMenu": [15],
+                "searchiing": false,
+                // 中文化c
+                language: {
+                    url: "//cdn.datatables.net/plug-ins/1.12.1/i18n/zh-HANT.json",
+                },
+
+            })
+
+
+
+        });
+
+
+
+
+
+
+        // 按鈕顏色
+
+        $(".page1").mouseover(function () {
+            $(this).css('background-color', 'rgb(255, 223, 182)');
+        });
+        $(".page1").mouseleave(function () {
+            $(this).css('background-color', 'rgb(243, 208, 137');
+        });
+        $(".popup-btn").click(function () {
+            var href = $(this).attr("href")
+            $(href).fadeIn(250);
+            $(href).children("popup-box").removeClass("transform-out").addClass("transform-in");
+            // e.preventDefault();
+        });
+        // 關閉頁面
+        $(".popup-close").click(function () {
+            closeWindow();
+        });
+        function closeWindow() {
+            $(".popup-wrap").fadeOut(200);
+            $(".popup-box").removeClass("transform-in").addClass("transform-out");
+            event.preventDefault();
+        }
+
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+</body>
+
+</html>
